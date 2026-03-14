@@ -270,7 +270,7 @@ To set up and run the project locally, follow these steps:
 
   - Clone the repository:
    ```bash
-   git clone https://github.com/aymane-maghouti/Big-Data-Project
+   git clone https://github.com/fathallaholmes/Big-Data-Trading
    ```
 
 
