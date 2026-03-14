@@ -2,7 +2,7 @@ import  pickle
 import ast
 from xgboost import XGBRegressor
 
-def map_brand_to_numeric(brand):
+def map_trading_data_to_numeric(brand):
     if brand == 'Maxfone':
         return 1
     elif brand == 'Infinix':
@@ -89,7 +89,7 @@ def map_numeric_to_sim_type(number):
 
 
 
-def transformation(original_list):
+def trading_data_transformation(original_list):
 
     model = pickle.load(open('ML_operations/xgb_model.pkl', 'rb'))
 
@@ -99,7 +99,7 @@ def transformation(original_list):
     print(original_list)
 
     new_list = [
-        map_brand_to_numeric(original_list[1]),  # Brand name
+        map_trading_data_to_numeric(original_list[1]),  # Brand name
         float(original_list[3]),  # Screen size
         float(original_list[4]),  # RAM
         float(original_list[5]),  # Storage

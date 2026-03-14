@@ -9,7 +9,7 @@ from Stream_data.stream_data import generate_real_time_data
 def producer_thread():
     while True:
         try:
-            file_path = '../Stream_data/stream_data.csv'
+            file_path = '../Stream_data/sample_trading_data.csv'
             message = generate_real_time_data(file_path)
 
             send_message(message)

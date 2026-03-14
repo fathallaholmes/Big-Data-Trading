@@ -1,4 +1,4 @@
-# Smartphone Price Prediction in Big Data Environment
+# AI and Big Data Analytics for Trading
 
 ## Table of Contents
 1. [Project Overview](#1-project-overview)
@@ -13,7 +13,7 @@
 10. [Contacts](#10-contacts)
 
 ## 1. Project Overview
-This project aims to predict smartphone prices using a combination of batch and stream processing techniques in a Big Data environment. The architecture follows the Lambda Architecture pattern, providing both real-time and batch processing capabilities to users.
+This project analyzes and predicts financial trading market trends using Big Data technologies and Artificial Intelligence. The architecture follows the Lambda Architecture pattern, providing both real-time and batch processing capabilities to users.
 
 ## 2. Technologies Used
 * **Ingestion Layer:** Apache Kafka (message broker)
@@ -21,33 +21,32 @@ This project aims to predict smartphone prices using a combination of batch and 
 * **Batch Layer:** Apache Spark (data processing framework), Apache Airflow (workflow orchestration), PostgreSQL (data warehouse (Batch View))
 * **Visualization:** Spring Boot (web application framework), Power BI (interactive dashboards)
 
-
 ## 3. Architecture
 
 - Here is the architecture :
  ![architecture](images/architecture.png)
 
-
 The project architecture consists of five main layers: the ingestion layer, the batch layer, the stream layer, the serving layer and the visualization layer.
 
 ### Ingestion Layer
-- **Apache Kafka**: Utilized for real-time data ingestion from an API providing smartphone data.
+- **Apache Kafka**: Utilized for real-time data ingestion from an API providing financial market data.
    - **Consumer**: Collects data from the API and feeds it into the stream and batch layer.
 
 ### Stream Layer
-- **Producer**: A machine learning model developed using XGBoost to estimate smartphone prices. This model runs in real-time and stores predictions in a realtime view. (details about the model <a href="https://github.com/aymane-maghouti/Sentiment-Analysis-for-Jumia-Reviews-and-Smartphone-Price-Prediction-System" target="_blank">here</a> )
+- **Producer**: A machine learning model developed using XGBoost to estimate real-time trading signal predictions based on live market data. This model runs in real-time and stores predictions in a real-time view. (details about the model <a href="https://github.com/aymane-maghouti/Sentiment-Analysis-for-Jumia-Reviews-and-Smartphone-Price-Prediction-System" target="_blank">here</a> )
 
 ### Batch Layer
 - **HDFS**: Data from the API is stored in HDFS as part of the data lake solution.
  - **PySpark**: Performs data transformation on stored data using PySpark.
  - **Apache Airflow**: Orchestrates the batch processing workflow.
-### Serving Layer
-- **Realtime View**: Implemented using HBase to provide real-time access to predicted smartphone prices.
-- **Batch View**: Transformed data is stored in PostgreSQL, as the data warehouse solution.
-### Visualization Layer
-- **Spring Boot Web Application**: Provides a user interface to view real-time smartphone prices.
-- **Power BI Dashboard**: Provides batch users with a visualization of processed data.
 
+### Serving Layer
+- **Realtime View**: Implemented using HBase to provide real-time access to predicted trading signals.
+- **Batch View**: Transformed data is stored in PostgreSQL, as the data warehouse solution.
+
+### Visualization Layer
+- **Spring Boot Web Application**: Provides a user interface to view real-time trading signals.
+- **Power BI Dashboard**: Provides batch users with a visualization of processed data.
 
 ## 4. Repository Structure
 The repository is organized as follows:
@@ -236,8 +235,6 @@ Big-Data-Project:.
                                 RealTimeAppApplicationTests.class
 
 
-```
-
 ## 5. Software Requirements for Running the Project
 
 This project requires the following software to be installed and configured on your system:
@@ -266,7 +263,7 @@ This project requires the following software to be installed and configured on y
 * **Power BI Desktop** 
 
 
-By installing and configuring these tools, you will have the necessary environment to run this project and leverage its real-time and batch processing capabilities for smartphone price prediction and analysis.
+By installing and configuring these tools, you will have the necessary environment to run this project and leverage its real-time and batch processing capabilities for trading analytics and analysis.
 
 ## 6. How to Run
 To set up and run the project locally, follow these steps:
@@ -291,19 +288,19 @@ kafka-server-start.bat C:/kafka_2.13_2.6.0/config/server.properties
    - Create Kafka topic
 
    ```batch 
-kafka-topics.bat --create --topic smartphoneTopic --bootstrap-server localhost:9092
+kafka-topics.bat --create --topic tradingTopic --bootstrap-server localhost:9092
 ```
 
   - Run the kafka producer
 
    ```batch 
-kafka-console-producer.bat --topic smartphoneTopic --bootstrap-server localhost:9092
+kafka-console-producer.bat --topic tradingTopic --bootstrap-server localhost:9092
 ```
 
   - Run the kafka consumer
 
    ```batch 
-kafka-console-consumer.bat --topic smartphoneTopic --from-beginning --bootstrap-server localhost:9092
+kafka-console-consumer.bat --topic tradingTopic --from-beginning --bootstrap-server localhost:9092
 ```
 
   - Start HDFS and yarn (start-all or start-dfs and start-yarn)
@@ -358,13 +355,13 @@ kafka-server-start.bat C:/kafka_2.13_2.6.0/config/server.properties
   - Run the kafka producer
 
    ```batch 
-kafka-console-producer.bat --topic smartphoneTopic --bootstrap-server localhost:9092
+kafka-console-producer.bat --topic tradingTopic --bootstrap-server localhost:9092
 ```
 
   - Run the kafka consumer
 
    ```batch 
-kafka-console-consumer.bat --topic smartphoneTopic --from-beginning --bootstrap-server localhost:9092
+kafka-console-consumer.bat --topic tradingTopic --from-beginning --bootstrap-server localhost:9092
 ```
 
   - Run HDFS and yarn (start-all or start-dfs and start-yarn)
@@ -379,12 +376,12 @@ after all this run `syc_with_Airflow.py` script.
 
 ## 7. Dashboards
 
-This project utilizes two dashboards to visualize smartphone price predictions and historical data:
+This project utilizes two dashboards to visualize trading analytics and historical data:
 
 #### **1. Real-Time Dashboard (Spring Boot Application):**
 
 - This dashboard is built using a Spring Boot web application.
-- It displays the **predicted price of smartphones in real-time**.
+- It displays the **predicted trading signals in real-time**.
 - Users can access this dashboard through a web interface. 
 
 
@@ -397,7 +394,7 @@ Here is the UI of th Spring Boot web application:
 #### **2. Batch Dashboard (Power BI):**
 
 - This dashboard leverages Power BI for interactive data exploration.
-- It provides insights into **historical smartphone price trends**.
+- It provides insights into **historical data processing for financial trading analysis**.
 - This dashboard is designed for batch users interested in historical analysis.
 
 
@@ -412,7 +409,7 @@ Here is the  Dashboard created in Power BI:
 
 ## 9. Conclusion
 
-- This big data architecture effectively predicts smartphone prices in real-time and provides historical analysis capabilities. The Lambda architecture facilitates efficient stream processing for real-time predictions using XGBoost and HBase, while Apache Airflow orchestrates batch processing with Spark to populate the PostgreSQL data warehouse for historical insights. This solution empowers real-time and batch users with valuable price information, enabling data-driven decision-making.
+- This big data architecture effectively predicts trading signal generation (BUY/SELL) based on market trends and provides historical analysis capabilities. The Lambda architecture facilitates efficient stream processing for real-time predictions using XGBoost and HBase, while Apache Airflow orchestrates batch processing with Spark to populate the PostgreSQL data warehouse for historical insights. This solution empowers real-time and batch users with valuable price information, enabling data-driven decision-making.
 
 you can watch the demo video <a href="https://youtu.be/iClZyC_TZyA" target="_blank">here</a> 
 

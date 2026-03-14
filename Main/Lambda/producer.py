@@ -1,7 +1,7 @@
 from kafka import KafkaProducer
 
 bootstrap_servers = 'localhost:9092'
-topic = 'smartphoneTopic'
+topic = 'trading_dataTopic'
 
 producer = KafkaProducer(bootstrap_servers=bootstrap_servers)
 
